@@ -1,4 +1,4 @@
-package case_fruit.repository.Impl;
+package case_fruit.repository;
 
 
 import case_fruit.model.Product;

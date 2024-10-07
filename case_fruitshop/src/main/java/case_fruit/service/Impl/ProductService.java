@@ -1,11 +1,10 @@
 package case_fruit.service.Impl;
 import case_fruit.model.Product;
-import case_fruit.repository.Impl.IProduct;
+import case_fruit.repository.IProduct;
 import case_fruit.repository.Impl.ProductRepository;
 import case_fruit.service.IProductService;
 
 import java.sql.SQLException;
-import java.util.ArrayList;
 import java.util.List;
 
 public class ProductService implements IProductService {

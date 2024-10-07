@@ -1,6 +1,7 @@
 package case_fruit.repository.Impl;
 
 import case_fruit.model.Product;
+import case_fruit.repository.IProduct;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -9,23 +10,23 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
-public class ProductRepository implements IProduct{
+public class ProductRepository implements IProduct {
     @Override
-    public List<Product> findAllProducts() throws SQLException {
+    public List<Product> findAllProducts() {
         List<Product> products = new ArrayList<>();
         String sql = "SELECT * FROM product";
         try (Connection connection = BaseRepository.getConnection();
-             PreparedStatement preparedStatement = connection.prepareStatement(sql);
-             ResultSet resultSet = preparedStatement.executeQuery()) {
+             PreparedStatement statement = connection.prepareStatement(sql);
+             ResultSet resultSet = statement.executeQuery()) {
             while (resultSet.next()) {
-                products.add(mapRowToProduct(resultSet));
+                Product product = mapRowToProduct(resultSet);
+                products.add(product);
             }
         } catch (SQLException e) {
             e.printStackTrace();
         }
         return products;
     }
-
     @Override
     public void saveProduct(Product product) {
         String sql = "INSERT INTO product (name, description, price, image, category_id) VALUES (?, ?, ?, ?, ?)";

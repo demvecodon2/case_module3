@@ -6,20 +6,31 @@
   To change this template use File | Settings | File Templates.
 --%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
-<html lang="en">
+<html>
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
     <title>Lỗi</title>
+    <link rel="stylesheet" href="css/styles.css">
 </head>
 <body>
-<div class="container mt-5">
-    <h2 class="text-center">Đã xảy ra lỗi</h2>
-    <div class="alert alert-danger">
-        <p>${error}</p>
-    </div>
-    <a href="fruitshop" class="btn btn-secondary">Quay lại danh sách</a>
-</div>
+<header>
+    <h1>Cửa Hàng Hoa Quả</h1>
+    <nav>
+        <ul>
+            <li><a href="../index.jsp">Trang Chủ</a></li>
+            <li><a href="productList.jsp">Sản Phẩm</a></li>
+            <li><a href="contact.jsp">Liên Hệ</a></li>
+        </ul>
+    </nav>
+</header>
+
+<main>
+    <h2>Đã xảy ra lỗi!</h2>
+    <p>${error}</p>
+</main>
+
+<footer>
+    <p>&copy; 2024 Cửa Hàng Hoa Quả. Tất cả quyền được bảo lưu.</p>
+</footer>
 </body>
 </html>

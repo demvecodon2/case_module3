@@ -11,6 +11,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 import java.util.List;
+
 @WebServlet(name = "productController", value = "/fruitshop")
 public class ProductController extends HttpServlet {
     private static final String ACTION_CREATE = "create";
@@ -39,7 +40,7 @@ public class ProductController extends HttpServlet {
                     int editId = Integer.parseInt(request.getParameter("id"));
                     Product product = productService.getById(editId);
                     request.setAttribute("product", product);
-                    request.getRequestDispatcher("/fruit/productDetail.jsp").forward(request, response);
+                    request.getRequestDispatcher("WEB-INF/fruit/productList.jsp").forward(request, response);
                     return;
 
                 case ACTION_DELETE:
@@ -54,18 +55,19 @@ public class ProductController extends HttpServlet {
                     break;
 
                 default:
-                    products = productService.findAllProducts(); // Lấy tất cả sản phẩm
+                    products = productService.findAllProducts();
+                    request.setAttribute("products", products);
                     break;
             }
 
             request.setAttribute("products", products);
-            request.getRequestDispatcher("/fruit/fruit.jsp").forward(request, response); // Hiển thị sản phẩm
+            request.getRequestDispatcher("WEB-INF/fruit/productList.jsp").forward(request, response);
         } catch (NumberFormatException e) {
             response.sendError(HttpServletResponse.SC_BAD_REQUEST, "Invalid product ID");
         } catch (Exception e) {
             e.printStackTrace();
             request.setAttribute("error", "Đã xảy ra lỗi.");
-            request.getRequestDispatcher("/fruit/error.jsp").forward(request, response);
+            request.getRequestDispatcher("WEB-INF/fruit/error.jsp").forward(request, response);
         }
     }
 
@@ -111,7 +113,7 @@ public class ProductController extends HttpServlet {
         } catch (Exception e) {
             e.printStackTrace();
             request.setAttribute("error", "Đã xảy ra lỗi.");
-            request.getRequestDispatcher("/fruit/error.jsp").forward(request, response);
+            request.getRequestDispatcher("WEB-INF/fruit/error.jsp").forward(request, response);
         }
     }
 }

@@ -6,42 +6,50 @@
   To change this template use File | Settings | File Templates.
 --%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
-<html lang="en">
+
+<html>
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
-    <title>Thêm Sản Phẩm</title>
+    <title>Chi Tiết Sản Phẩm</title>
+    <link rel="stylesheet" href="css/styles.css">
 </head>
 <body>
-<div class="container mt-5">
-    <h2 class="text-center">Thêm Sản Phẩm Mới</h2>
-    <form action="fruitshop" method="post">
-        <input type="hidden" name="action" value="create">
-        <div class="form-group">
-            <label for="name">Tên:</label>
-            <input type="text" class="form-control" id="name" name="name" required>
-        </div>
-        <div class="form-group">
-            <label for="description">Mô tả:</label>
-            <textarea class="form-control" id="description" name="description" required></textarea>
-        </div>
-        <div class="form-group">
-            <label for="price">Giá:</label>
-            <input type="number" class="form-control" id="price" name="price" required>
-        </div>
-        <div class="form-group">
-            <label for="image">Hình ảnh:</label>
-            <input type="text" class="form-control" id="image" name="image" required>
-        </div>
-        <div class="form-group">
-            <label for="category_id">Danh mục:</label>
-            <input type="number" class="form-control" id="category_id" name="category_id" required>
-        </div>
-        <button type="submit" class="btn btn-success">Thêm Sản Phẩm</button>
-        <a href="fruitshop" class="btn btn-secondary">Quay lại danh sách</a>
-    </form>
-</div>
+<header>
+    <h1>Cửa Hàng Hoa Quả</h1>
+    <nav>
+        <ul>
+            <li><a href="../index.jsp">Trang Chủ</a></li>
+            <li><a href="productList.jsp">Sản Phẩm</a></li>
+            <li><a href="contact.jsp">Liên Hệ</a></li>
+        </ul>
+    </nav>
+</header>
+
+<main>
+    <h2>Chi Tiết Sản Phẩm</h2>
+    <div class="product-detail">
+        <img src="${product.image}" alt="${product.name}">
+        <h3>${product.name}</h3>
+        <p>Giá: ${product.price} VNĐ</p>
+        <p>Mô tả: ${product.description}</p>
+        <form action="fruitshop" method="post">
+            <input type="hidden" name="action" value="edit">
+            <input type="hidden" name="id" value="${product.id}">
+            <label>Tên sản phẩm:</label>
+            <input type="text" name="name" value="${product.name}" required><br>
+            <label>Mô tả:</label>
+            <textarea name="description" required>${product.description}</textarea><br>
+            <label>Giá:</label>
+            <input type="number" name="price" value="${product.price}" required><br>
+            <label>Hình ảnh:</label>
+            <input type="text" name="image" value="${product.image}" required><br>
+            <button type="submit">Cập nhật sản phẩm</button>
+        </form>
+    </div>
+</main>
+
+<footer>
+    <p>&copy; 2024 Cửa Hàng Hoa Quả. Tất cả quyền được bảo lưu.</p>
+</footer>
 </body>
 </html>
-
