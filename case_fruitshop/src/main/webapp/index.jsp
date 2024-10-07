@@ -1,5 +1,5 @@
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
-\
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -14,79 +14,63 @@
       font-family: Arial, sans-serif;
       background-color: #f9f9f9;
     }
-
     .logo {
       height: 80px;
       border-radius: 10px;
       box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
       transition: transform 0.3s;
     }
-
     .logo:hover {
       transform: scale(1.05);
     }
-
     .banner {
       background-color: #ffcc80;
     }
-
     .card {
       transition: transform 0.3s;
     }
-
     .card:hover {
       transform: scale(1.05);
     }
-
     .card-title {
       font-weight: bold;
       color: #333;
     }
-
     .text-danger {
       font-size: 1.25rem;
       color: #e74c3c;
     }
-
     .card-img-top {
       height: 300px;
       object-fit: cover;
     }
-
     .navbar-nav .nav-link {
       color: #27ae60;
     }
-
     .navbar-nav .nav-link:hover {
       color: #fff;
       background-color: #2ecc71;
     }
-
     .form-control {
       width: 250px;
     }
-
     .btn-outline-success {
       border-color: #27ae60;
       color: #27ae60;
     }
-
     .btn-outline-success:hover {
       background-color: #d4edda;
       color: #155724;
     }
-
     .custom-carousel {
       max-width: 100%;
       margin: auto;
     }
-
     .carousel img {
       max-height: 400px;
       width: 100%;
       object-fit: cover;
     }
-
     .navbar {
       position: fixed;
       top: 0;
@@ -96,16 +80,13 @@
       background-color: #ffffff;
       box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
     }
-
     body {
       padding-top: 160px;
     }
-
     .container {
       max-width: 100%;
       padding: 0 15px;
     }
-
     footer {
       background-color: #ff7c2a;
       color: white;
@@ -116,7 +97,7 @@
 <header style="background-color: #ffd2ab;">
   <div class="container d-flex align-items-center justify-content-between fixed-top" style="top: 0;">
     <img src="https://free.vector6.com/wp-content/uploads/2020/07/KhoThietKe-0000000184.jpg" alt="Logo" class="logo">
-    <form class="d-flex ms-3" action="fruitshop" method="get">
+    <form class="d-flex ms-3" action="/fruit-shop" method="get">
       <input class="form-control me-2" type="search" name="keyword" placeholder="Tìm sản phẩm" aria-label="Search">
       <button class="btn btn-outline-light" style="color: lavenderblush; background: #ff7c2a;" type="submit" name="action" value="search">Tìm</button>
     </form>
@@ -132,17 +113,17 @@
           <li class="nav-item dropdown">
             <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">Sản Phẩm</a>
             <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-              <li><a class="dropdown-item" href="#">Trái Cây</a></li>
-              <li><a class="dropdown-item" href="#">Giỏ Trái Cây</a></li>
-              <li><a class="dropdown-item" href="#">Hoa Quả Nhập Khẩu</a></li>
-              <li><a class="dropdown-item" href="#">Hoa Quả Sấy</a></li>
-              <li><a class="dropdown-item" href="#">Hoa Quả Tươi</a></li>
+              <c:forEach items="${categories}" var="categories">
+                <li><a class="dropdown-item" href="#">${categories.name}</a></li>
+              </c:forEach>
             </ul>
           </li>
           <li class="nav-item"><a class="nav-link" href="#">Giới Thiệu</a></li>
           <li class="nav-item"><a class="nav-link" href="#">Tin Tức</a></li>
           <li class="nav-item"><a class="nav-link" href="#">Liên Hệ</a></li>
-          <button class="btn btn-primary" onclick="window.location.href='/login'">Đăng nhập</button>
+          <li class="nav-item">
+            <button class="btn btn-primary" onclick="window.location.href='/fruitshop?action=login'">Đăng nhập</button>
+          </li>
         </ul>
       </div>
     </div>
@@ -187,8 +168,8 @@
             <p class="card-text"><c:out value="${product.description}"/></p>
             <p class="text-danger"><c:out value="${product.price}"/> VND</p>
             <div class="actions">
-              <a href="fruitshop?action=search&id=${product.product_id}" class="btn btn-info">Xem</a>
-              <a href="fruitshop?action=add&id=${product.product_id}" class="btn btn-success" onclick="return confirm('Bạn có chắc chắn muốn mua sản phẩm này?');">Mua</a>
+              <a href="fruit-shop?action=search&id=${product.product_id}" class="btn btn-info">Xem</a>
+              <a href="fruit-shop?action=add&id=${product.product_id}" class="btn btn-success" onclick="return confirm('Bạn có chắc chắn muốn mua sản phẩm này?');">Mua</a>
             </div>
           </div>
         </div>

@@ -1,6 +1,7 @@
 package case_fruit.repository.Impl;
 
 import case_fruit.model.Product;
+import case_fruit.model.ProductCategory;
 import case_fruit.repository.IProduct;
 
 import java.sql.Connection;
@@ -97,6 +98,29 @@ public class ProductRepository implements IProduct {
         }
         return productList;
     }
+
+    @Override
+    public List<ProductCategory> findAllProductCategories() {
+        List<ProductCategory> productCategories = new ArrayList<>();
+        String sql = "SELECT * FROM product_category";
+        try (Connection connection = BaseRepository.getConnection();
+             PreparedStatement statement = connection.prepareStatement(sql);
+             ResultSet resultSet = statement.executeQuery()) {
+
+            while (resultSet.next()) {
+                ProductCategory category = new ProductCategory();
+                category.setCategory_id(resultSet.getInt("category_id"));
+                category.setName(resultSet.getString("name"));
+                category.setDescription(resultSet.getString("description"));
+
+                productCategories.add(category);
+            }
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
+        return productCategories;
+    }
+
 
     private void setProductParams(PreparedStatement statement, Product product) throws SQLException {
         statement.setString(1, product.getName());

@@ -19,9 +19,9 @@
     <h1>Cửa Hàng Hoa Quả</h1>
     <nav>
         <ul>
-            <li><a href="../index.jsp">Trang Chủ</a></li>
-            <li><a href="productList.jsp">Sản Phẩm</a></li>
-            <li><a href="../contact.jsp">Liên Hệ</a></li>
+            <li><a href="">Trang Chủ</a></li>
+            <li><a href="">Sản Phẩm</a></li>
+            <li><a href="">Liên Hệ</a></li>
         </ul>
     </nav>
 </header>
@@ -62,7 +62,7 @@
             </tbody>
         </table>
     </div>
-    <a href="s.jsp">Thêm Sản Phẩm Mới</a>
+    <a href="/fruitshop?action=create">Thêm Sản Phẩm Mới</a>
 </main>
 
 <footer>

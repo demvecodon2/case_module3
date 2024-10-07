@@ -142,7 +142,7 @@
           <li class="nav-item"><a class="nav-link" href="#">Giới Thiệu</a></li>
           <li class="nav-item"><a class="nav-link" href="#">Tin Tức</a></li>
           <li class="nav-item"><a class="nav-link" href="#">Liên Hệ</a></li>
-          <button class="btn btn-primary" onclick="window.location.href='/login'">Đăng nhập</button>
+          <button class="btn btn-primary" onclick="window.location.href='/fruitshop?action=login'">Đăng nhập</button>
         </ul>
       </div>
     </div>

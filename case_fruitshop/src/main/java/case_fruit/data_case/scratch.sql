@@ -13,18 +13,17 @@ INSERT INTO user_role (role_name) VALUES ('người dùng'), ('quản lý');
 CREATE TABLE user (
                       user_id INT PRIMARY KEY AUTO_INCREMENT,
                       name VARCHAR(100),
-                      date DATE,
-                      date_of_birth DATE,
+
                       email VARCHAR(50) UNIQUE,
                       phone VARCHAR(30),
                       role_id INT,
                       FOREIGN KEY (role_id) REFERENCES user_role(role_id)
 );
 
-INSERT INTO user (name, date, date_of_birth, email, phone, role_id) VALUES
-                                                                        ('hiếu', '2024-10-02', '2001-07-01', 'hdsshf@gmail.com', '01212271', 1),
-                                                                        ('tuyết', '2024-10-21', '2001-12-12', 'sadgk@gmail.com', '123129412', 1),
-                                                                        ('nguyên', '2023-12-31', '1997-12-12', 'fjsgjg@gmail.com', '3123112', 2);
+INSERT INTO user (name, email, phone, role_id) VALUES
+                                                                        ('hiếu',  'hdsshf@gmail.com', '01212271', 1),
+                                                                        ('tuyết',  'sadgk@gmail.com', '123129412', 1),
+                                                                        ('nguyên', 'fjsgjg@gmail.com', '3123112', 2);
 
 -- Bảng tài khoản để lưu trữ tên đăng nhập và mật khẩu
 CREATE TABLE account (

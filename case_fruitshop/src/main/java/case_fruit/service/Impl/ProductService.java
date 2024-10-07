@@ -1,5 +1,6 @@
 package case_fruit.service.Impl;
 import case_fruit.model.Product;
+import case_fruit.model.ProductCategory;
 import case_fruit.repository.IProduct;
 import case_fruit.repository.Impl.ProductRepository;
 import case_fruit.service.IProductService;
@@ -38,5 +39,10 @@ public class ProductService implements IProductService {
     @Override
     public List<Product> searchProducts(String name) throws SQLException {
         return productRepository.searchProducts(name);
+
+    }
+
+    public List<ProductCategory> findAllProductCategories() {
+        return productRepository.findAllProductCategories();
     }
 }
